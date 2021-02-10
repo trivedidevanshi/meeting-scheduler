@@ -1,0 +1,19 @@
+.GetDate .ChangeDateButton{
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+    outline: none;
+
+}
+.GetDate .ChangeMonthSelect {
+    font-size: 1em;
+    border: none;
+    width: fit-content;
+    outline: none;
+}
+.GetDate .ChangeYearInput{
+    font-size: 1em;
+    width: 55px;
+    border: none;
+    margin-left: 5px;
+}

@@ -1,0 +1,10 @@
+.Calender .GridContainer{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+}
+/*color: #069CE5;*/
+.Calender .GridHeaderItem{
+    border: 1px solid darkgray;
+    padding: 10px;
+    color: #4b4b4b;
+}

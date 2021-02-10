@@ -1,0 +1,15 @@
+.MeetingScheduler{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.MeetingScheduler .Navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.MeetingScheduler .SelectUserSelect{
+   margin-left: 5px;
+    font-size: 1em;
+}
