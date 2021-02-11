@@ -1,23 +1,23 @@
-.GridItem{
+.GridItem {
     border: 1px solid #eee;
     padding: 10px;
 }
-.GridItem .GridDate{
+
+.GridItem .GridDate {
     font-size: 0.75em;
 }
 
-.GridItem .DateCellUl{
+.GridItem .DateCellMeetingList {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     margin-top: 5px;
 
 }
-.GridItem .DateCellLi{
+
+.GridItem .DateCellMeetingListItem {
     display: flex;
     align-items: center;
     text-align: left;
-    width: fit-content;
     font-size: 0.7em;
     margin-top: 5px;
     background-color: #069CE5;
@@ -25,10 +25,7 @@
     padding: 4px 8px;
     color: #fff;
 }
-.GridItem .DateCellLi img{
+
+.GridItem .DateCellMeetingListItem img {
     margin: 0px 4px 0px 0px;
-}
-.GridItem .BlueCircle{
-    width: 5px;
-    height: 5px;
 }

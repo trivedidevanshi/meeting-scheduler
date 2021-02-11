@@ -53,12 +53,14 @@ function Calendar(props) {
                 {gridDays}
                 {
                     gridItems.map(item => <DateCell date={item.date} meetings={item.meetings} key={item.date}
-                                                    createNewMeeting={setNewMeetingOpen.bind(this,item.fullDate)}
-                                                    displayMeetingDetails={(data)=>setDisplayMeeting(data)}/>)
+                                                    createNewMeeting={setNewMeetingOpen.bind(this, item.fullDate)}
+                                                    displayMeetingDetails={(data) => setDisplayMeeting(data)}/>)
                 }
             </div>
-            <NewMeeting date={newMeetingOpen} onClose={setNewMeetingOpen.bind(this, null)} onMeetingAdd={onMeetingAdd} userList={userList} user={user}/>
-            <DisplayMeeting meeting = {displayMeeting} onClose={setDisplayMeeting.bind(this, null)} deleteMeeting={deleteMeeting} user={user}></DisplayMeeting>
+            <NewMeeting date={newMeetingOpen} onClose={setNewMeetingOpen.bind(this, null)} onMeetingAdd={onMeetingAdd}
+                        userList={userList} user={user}/>
+            <DisplayMeeting meeting={displayMeeting} onClose={setDisplayMeeting.bind(this, null)}
+                            deleteMeeting={deleteMeeting} user={user}></DisplayMeeting>
         </div>
     );
 }

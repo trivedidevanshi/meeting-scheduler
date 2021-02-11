@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import {months} from "../../data/data";
+import {months} from "../../constants/constants";
 import './GetDate.css';
 
 function GetDate(props) {
@@ -27,15 +27,15 @@ function GetDate(props) {
     const changeMonth = (e) => setCurrMonth(e.target.value);
     const changeYear = (e) => setCurrYear(e.target.value);
     const prevMonth = () => {
-        if (currMonth == 1) {
-            setCurrMonth(12);
+        if (currMonth == 0) {
+            setCurrMonth(11);
             setCurrYear(currYear - 1);
         } else
             setCurrMonth(currMonth - 1);
     };
     const nextMonth = () => {
-        if (currMonth == 12) {
-            setCurrMonth(1);
+        if (currMonth == 11) {
+            setCurrMonth(0);
             setCurrYear(currYear + 1);
         } else
             setCurrMonth(currMonth + 1);
@@ -46,12 +46,12 @@ function GetDate(props) {
     return (
         <div className="GetDate">
             <button className="ChangeDateButton" onClick={prevMonth}>&lt;</button>
-
-            <select value={currMonth} onChange={changeMonth} className="ChangeMonthSelect">
-                {optionItems}
-            </select>
-            <input type="number" min={0} value={currYear} onChange={changeYear} className="ChangeYearInput"/>
-
+            <div>
+                <select value={currMonth} onChange={changeMonth} className="ChangeMonthSelect">
+                    {optionItems}
+                </select>
+                <input type="number" min={0} value={currYear} onChange={changeYear} className="ChangeYearInput"/>
+            </div>
             <button className="ChangeDateButton" onClick={nextMonth}>&gt;</button>
         </div>
     );

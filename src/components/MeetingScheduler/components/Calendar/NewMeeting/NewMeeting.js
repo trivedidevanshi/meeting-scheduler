@@ -8,7 +8,7 @@ function NewMeeting(props) {
     const [selected, setSelected] = useState([]);
     const [startDate, setStartDate] = useState(date);
     const [endDate, setEndDate] = useState(date);
-
+    const [collidingUsers, setCollidingUsers] = useState([]);
     useEffect(() => {
         setStartDate(date);
         setEndDate(date);
@@ -23,7 +23,8 @@ function NewMeeting(props) {
 
     let formSubmit = (e) => {
         e.preventDefault();
-        onMeetingAdd({
+        setCollidingUsers([]);
+        let response = onMeetingAdd({
             id: new Date().getTime(),
             title: e.target.title.value,
             creator: user,
@@ -31,44 +32,61 @@ function NewMeeting(props) {
             startTime: startDate,
             endTime: endDate
         });
-        onClose();
+        if (response.isCollision) {
+            // alert("collision with "+response.collidingUsers);
+            setCollidingUsers(response.collidingUsers);
+        } else {
+            onClose();
+            setCollidingUsers([]);
+        }
     };
 
-
+    const onCloseModal = () => {
+        setCollidingUsers([]);
+        onClose();
+    };
     return (
         (!!date && user.value !== "allUsers") ? (<div className="NewMeetingModal">
             <div className="NewMeetingModalHeader">
-                <button onClick={onClose}>x</button>
+                <button onClick={onCloseModal}>x</button>
             </div>
             <div className="NewMeetingModalContent">
+                <div>Create New Meeting</div>
+                <hr/>
                 <form onSubmit={formSubmit}>
                     <label htmlFor="startDate">Meeting Title: <input type="text" id="title" name="title"
-                                                                    placeholder="Enter Meeting Title" required/></label>
+                                                                     placeholder="Enter Meeting Title"
+                                                                     required/></label>
                     <label>Creator: {user.value}</label>
-                    <label>Invite: <MultiSelect
-                            options={userList}
-                            value={selected}
-                            onChange={setSelected}
-                            labelledBy={"Select"}
-                            required
-                            className="NewMeetingModalUserSelect"
-                        />
+                    <label className="NewMeetingModalUserSelectLabel">Invite: <MultiSelect
+                        options={userList.filter(u => u.value !== user.value)}
+                        value={selected}
+                        onChange={setSelected}
+                        labelledBy={"Select"}
+                        required
+                        className="NewMeetingModalUserSelect"
+                    />
                     </label>
 
                     <label htmlFor="startDate">Start Meeting: <input type="datetime-local" name="startDate"
-                        // min={dateConverter(new Date())}
-                                                                    value={dateConverter(startDate)}
-                                                                    onChange={(e) => {
-                                                                        setStartDate(new Date(e.target.value))
-                                                                    }}
-                                                                    required/></label>
+                                                                     value={dateConverter(startDate)}
+                                                                     onChange={(e) => {
+                                                                         setStartDate(new Date(e.target.value))
+                                                                     }}
+                                                                     required/></label>
                     <label htmlFor="endDate">End Meeting: <input type="datetime-local" name="endDate"
-                                                                min={dateConverter(startDate)}
-                                                                value={dateConverter(endDate)}
-                                                                onChange={(e) => {
-                                                                    setEndDate(new Date(e.target.value))
-                                                                }}
-                                                                required/></label>
+                                                                 min={dateConverter(startDate)}
+                                                                 value={dateConverter(endDate)}
+                                                                 onChange={(e) => {
+                                                                     setEndDate(new Date(e.target.value))
+                                                                 }}
+                                                                 required/></label>
+
+                    {collidingUsers.length > 0 && (
+                        <div className="displayError">
+                            &#x21; The meeting collides with users {collidingUsers}.<br/>
+                            Please select different meeting time.
+                        </div>)}
                     <input type="submit" value="Create Meeting"/>
                 </form>
             </div>

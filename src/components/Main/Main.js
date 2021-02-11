@@ -38,7 +38,9 @@ let demo_meetings = [
 
 function Main() {
     let [meetings, setMeetings] = useState(demo_meetings);
-    let [user, setUser] = useState({label: "allUsers", value: "allUsers"});
+    let [allMeetings, setAllMeetings] = useState(demo_meetings);
+
+    let [user, setUser] = useState(userList[5]);
 
     useEffect(() => {
         if (user.value === "allUsers") {
@@ -49,14 +51,38 @@ function Main() {
     }, [user]);
 
     const onMeetingAdd = (meetingDetail) => {
+        let meetingInvites = meetingDetail.invites.map(meetingDetailInvite => meetingDetailInvite.value);
+        meetingInvites = [...meetingInvites, meetingDetail.creator.value];
+        let collidingUsers = [];
+        let collision = allMeetings.map(meet => {
+            if (meet.startTime <= meetingDetail.startTime && meetingDetail.endTime <= meet.endTime) {
+                let meetInvites = meet.invites.map(meetInvite => meetInvite.value);
+                meetInvites = [...meetInvites, meet.creator.value];
+                if (meetInvites.map(r => {
+                    if (meetingInvites.includes(r)) {
+                        console.log(r);
+                        collidingUsers = [...collidingUsers, r];
+                        return true;
+                    }
+                    return false;
+                })) {
+                    return {isCollision: true, collidingUsers: collidingUsers};
+                }
+            }
+        });
+        if (!!collision && collision.find(r => !!r && r.isCollision === true))
+            return {isCollision: true, collidingUsers: collidingUsers};
+
+        setAllMeetings([...allMeetings, meetingDetail]);
         setMeetings([...meetings, meetingDetail]);
+        return {isCollision: false, collidingUsers: []};
     };
     const deleteMeeting = (meetingId) => {
+        setAllMeetings(allMeetings.filter(meet => meet.id !== meetingId));
         setMeetings(meetings.filter(meet => meet.id !== meetingId));
     };
     const changeUser = (userData) => {
 
-        console.log(userData.target.value);
         let userValue = userData.target.value;
         setUser({label: userValue, value: userValue});
     };

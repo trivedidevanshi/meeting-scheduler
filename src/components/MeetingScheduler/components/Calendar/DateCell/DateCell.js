@@ -1,6 +1,5 @@
 import React from 'react';
 import './DateCell.css';
-import blueCircle from './blue-circle.svg'
 
 function DateCell(props) {
     let {date, meetings, createNewMeeting, displayMeetingDetails} = props;
@@ -10,10 +9,13 @@ function DateCell(props) {
     else
         return <div className="GridItem" key={date} onClick={createNewMeeting}>
             <span className="GridDate">{date}</span>
-            <div className="DateCellUl">
+            <div className="DateCellMeetingList">
                 {meetings.map(meet =>
-                    <div className="DateCellLi" key={meet.id} onClick={(e)=>{ e.stopPropagation(); displayMeetingDetails(meet)}}>
-                        <img className="BlueCircle" src={blueCircle}/>
+                    <div className="DateCellMeetingListItem" key={meet.id} onClick={(e) => {
+                        e.stopPropagation();
+                        displayMeetingDetails(meet)
+                    }}>
+                        <span>&#8729;</span>
                         {meet.startTime.toLocaleTimeString()} - {meet.title}
                     </div>
                 )}

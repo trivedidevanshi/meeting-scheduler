@@ -12,10 +12,10 @@ function DisplayMeeting(props) {
                 <div>{meeting.title}</div>
                 <hr/>
                 <div>Creator: {meeting.creator.label}</div>
-                <div>Invites: {meeting.invites.map(invite => invite.label+" ")}</div>
+                <div>Invites: {meeting.invites.map(invite => invite.label + " ")}</div>
                 <div>Meeting Start: {meeting.startTime.toLocaleString()}</div>
                 <div>Meeting End: {meeting.endTime.toLocaleString()}</div>
-                {user.value !== "allUsers" && (<button onClick={() => {
+                {user.value !== "allUsers" && (user.value === meeting.creator.label) && (<button onClick={() => {
                     onClose();
                     deleteMeeting(meeting.id);
                 }}>Delete Meeting

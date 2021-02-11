@@ -1,4 +1,4 @@
-.NewMeetingModal{
+.NewMeetingModal {
     position: fixed;
     top: 40%;
     left: 50%;
@@ -13,36 +13,49 @@
 
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     background-color: #fff;
-    border-radius:10px;
+    border-radius: 10px;
 
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
 }
-.NewMeetingModal .NewMeetingModalHeader{
+
+.NewMeetingModal .NewMeetingModalHeader {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
 }
-.NewMeetingModal .NewMeetingModalHeader button{
+
+.NewMeetingModal .NewMeetingModalHeader button {
     border: none;
     background-color: transparent;
     outline: none;
 }
-.NewMeetingModal .NewMeetingModalContent form{
+
+.NewMeetingModal .NewMeetingModalContent form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-.NewMeetingModal .NewMeetingModalContent form label{
+
+.NewMeetingModal .NewMeetingModalContent form label {
     margin-bottom: 10px;
 }
-.NewMeetingModal .NewMeetingModalContent form label input{
+
+.NewMeetingModal .NewMeetingModalContent form .displayError {
+    text-align: left;
+    color: #EA4435;
+    font-size: 0.75em;
+}
+
+.NewMeetingModal .NewMeetingModalContent form label input {
     border: 1px solid #eeeeee;
     font-size: 1em;
     padding: 3px 5px;
+    background-color: transparent;
 }
-.NewMeetingModal .NewMeetingModalContent form input[type=submit]{
+
+.NewMeetingModal .NewMeetingModalContent form input[type=submit] {
     margin-top: 10px;
     border: none;
     font-size: 0.95em;
@@ -50,7 +63,33 @@
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
+    outline: none;
 }
-.NewMeetingModal .NewMeetingModalContent form .NewMeetingModalUserSelect{
+
+.NewMeetingModal .NewMeetingModalContent form .NewMeetingModalUserSelectLabel {
+    width: 100%;
+    text-align: left;
+}
+
+.NewMeetingModal .NewMeetingModalContent form .NewMeetingModalUserSelectLabel .NewMeetingModalUserSelect {
     display: inline-block;
+    width: 200px;
+    --rmsc-h: 25px;
+}
+
+.NewMeetingModal .NewMeetingModalContent > div {
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.NewMeetingModal .NewMeetingModalContent > div:nth-child(1) {
+    font-size: 1.5em;
+}
+
+.NewMeetingModal .NewMeetingModalContent hr {
+    border: 0;
+    width: 100%;
+    background-color: #000;
+    height: 1px;
 }

@@ -1,4 +1,4 @@
-.DisplayMeetingModal{
+.DisplayMeetingModal {
     position: fixed;
     top: 40%;
     left: 50%;
@@ -13,28 +13,32 @@
 
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     background-color: #fff;
-    border-radius:10px;
+    border-radius: 10px;
 
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
 }
-.DisplayMeetingModal .DisplayMeetingModalHeader{
+
+.DisplayMeetingModal .DisplayMeetingModalHeader {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
 }
-.DisplayMeetingModal .DisplayMeetingModalHeader button{
+
+.DisplayMeetingModal .DisplayMeetingModalHeader button {
     border: none;
     background-color: transparent;
     outline: none;
 }
+
 .DisplayMeetingModal .DisplayMeetingModalContent {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-.DisplayMeetingModal .DisplayMeetingModalContent button{
+
+.DisplayMeetingModal .DisplayMeetingModalContent button {
     margin-top: 10px;
     border: none;
     font-size: 0.95em;
@@ -43,16 +47,19 @@
     padding: 5px 10px;
     border-radius: 5px;
 }
-.DisplayMeetingModal .DisplayMeetingModalContent hr{
+
+.DisplayMeetingModal .DisplayMeetingModalContent hr {
     border: 0;
     width: 100%;
-    background-color:#000;
+    background-color: #000;
     height: 1px;
 }
-.DisplayMeetingModal .DisplayMeetingModalContent>div{
-     font-size: 1em;
-     margin-bottom: 10px;
- }
-.DisplayMeetingModal .DisplayMeetingModalContent>div:nth-child(1){
+
+.DisplayMeetingModal .DisplayMeetingModalContent > div {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.DisplayMeetingModal .DisplayMeetingModalContent > div:nth-child(1) {
     font-size: 1.5em;
 }
